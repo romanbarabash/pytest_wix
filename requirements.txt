@@ -1,0 +1,7 @@
+pytest==6.2.5
+selenium==4.1.0
+environs==9.3.5
+PyHamcrest==2.0.3
+allure-pytest==2.9.45
+allure-python-commons==2.9.45
+Faker==10.0.0
