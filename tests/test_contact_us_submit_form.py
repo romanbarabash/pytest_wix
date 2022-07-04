@@ -7,8 +7,8 @@ from src.models.contact_us_model import ContactUsModel
 @allure.story('WIX site')
 @allure.title('Test Contact US Submit form')
 @pytest.mark.functional
-@pytest.mark.usefixtures('sign_in', 'on_fail', 'open_contact_us_page')
-def test_contact_us_submit_form(contact_us_page, human_verification_modal):
+@pytest.mark.usefixtures('sign_in', 'on_fail')
+def test_contact_us_submit_form(contact_us_page, open_contact_us_page, human_verification_modal):
     contact_us_model = ContactUsModel.create()
 
     with allure.step('#1 Fill in "Submit Form" with valid parameters ->'

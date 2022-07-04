@@ -6,6 +6,7 @@ from pathlib import Path
 from typing import Dict
 
 
+#TODO
 def get_params_value(local_variables: Dict[str, str], string_type: str = 'json') -> str:
     if string_type == 'string':
         params = [f'"{key}" = "{value}"' for key, value in local_variables.items() if not (value is None or key == 'self')]

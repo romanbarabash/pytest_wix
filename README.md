@@ -4,11 +4,17 @@
 
 Open terminal in the root of the project and execute the command:
 ```
-pytest --alluredir=reports
+pytest tests  --alluredir ./allure-results
 ```
 Run Allure server locally:
 ```
-allure serve reports
+allure generate allure-results --clean  
 ```
 Allure should open report under new tab
+
+### Jenkins
+
+Server available locally under http://localhost:8080/
+
+
 
