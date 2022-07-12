@@ -10,12 +10,10 @@ class LoginPage(AbstractLoginPage):
     PATH = ''
 
     def __init__(self):
-        super().__init__(HOST, self.PATH)
-
         self.login_elements = LoginPageElements()
 
     def sign_in(self, username: str, password: str) -> 'LoginPage':
-        self.open_page()
+        self.open(HOST, self.PATH)
         self.login(username, password)
         return self
 
