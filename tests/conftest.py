@@ -27,6 +27,11 @@ def faq_page() -> FAQPage:
     return FAQPage()
 
 
+@pytest.fixture(scope='session')
+def login_page() -> LoginPage:
+    return LoginPage()
+
+
 # endregion pages
 
 
@@ -47,8 +52,8 @@ def open_browser():
 
 
 @pytest.fixture(scope='package')
-def sign_in(open_browser):
-    LoginPage().sign_in(USER_EMAIL, USER_PASSWORD)
+def sign_in(open_browser, login_page):
+    login_page.sign_in(USER_EMAIL, USER_PASSWORD)
 
 
 @pytest.fixture
