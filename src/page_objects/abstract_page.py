@@ -6,7 +6,7 @@ from src.wd.br.browser import browser
 
 class AbstractPage(metaclass=ABCMeta):
 
-    def _join_url(self, host: str, path: str | bool):
+    def _join_url(self, host: str, path: str):
         print(host)
         print(path)
         return urljoin(host, path)
