@@ -1,4 +1,5 @@
 from selenium import webdriver
+from webdriver_manager.chrome import ChromeDriverManager
 
 from config import DEBUG
 from src.wd.br.browser_manger import browser_manager
@@ -29,8 +30,10 @@ def get_options():
     return options
 
 
+
 def open_browser(browser_name: str = DEFAULT_BROWSER_NAME):
-    browser_manager.open_browser(webdriver.Chrome(options=get_options()), browser_name)
+    init_webdriver = webdriver.Chrome(ChromeDriverManager().install(), options=get_options())
+    browser_manager.open_browser(init_webdriver, browser_name)
     browser_manager.driver.implicitly_wait(0)  # should be zero
 
 
