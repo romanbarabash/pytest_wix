@@ -26,7 +26,7 @@ def get_options():
 
 
 def open_browser(browser_name: str = DEFAULT_BROWSER_NAME):
-    init_webdriver = webdriver.Chrome(ChromeDriverManager().install(), options=get_options())
+    init_webdriver = webdriver.Chrome(ChromeDriverManager().install())
     browser_manager.open_browser(init_webdriver, browser_name)
     browser_manager.driver.implicitly_wait(0)  # should be zero
 
