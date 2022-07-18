@@ -9,25 +9,28 @@ DEFAULT_BROWSER_NAME = 'default'
 
 def get_options():
     options = webdriver.ChromeOptions()
+    options.add_argument("--start-maximized")
+    options.add_argument('--ignore-ssl-errors=yes')
+    options.add_argument('--ignore-certificate-errors')
     options.add_argument('--headless')
-    options.add_argument("--no-sandbox")
-    options.add_argument("--disable-gpu")
-    options.add_argument("--remote-debugin-port=9222")
-    options.add_argument("--screen-size=1200x800")
+    options.add_argument('--no-sandbox')
+    options.add_argument('--window-size=1920,1080')
+    options.add_argument('--disable-dev-shm-usage')
+    options.add_argument('--disable-gpu')
 
     # profile = {'plugins.always_open_pdf_externally': True,
     #            'download.default_directory': get_path(DOWNLOADS_DIR),
     #            'download.prompt_for_download': False}
     #
     # options.add_experimental_option('prefs', profile)
-    options.set_capability('goog:loggingPrefs', {'performance': 'ALL'})
+    # options.set_capability('goog:loggingPrefs', {'performance': 'ALL'})
 
     return options
 
 
+
 def open_browser(browser_name: str = DEFAULT_BROWSER_NAME):
-    init_webdriver = webdriver.Chrome(ChromeDriverManager().install(),
-                                      desired_capabilities=get_options().to_capabilities())
+    init_webdriver = webdriver.Chrome(ChromeDriverManager().install(), options=get_options())
     browser_manager.open_browser(init_webdriver, browser_name)
     browser_manager.driver.implicitly_wait(0)  # should be zero
 
