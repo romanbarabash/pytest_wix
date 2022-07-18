@@ -11,6 +11,6 @@ class AbstractPage(metaclass=ABCMeta):
         print(path)
         return urljoin(host, path)
 
-    def open(self, host: str, path: str | bool) -> 'AbstractPage':
+    def open(self, host: str, path: str) -> 'AbstractPage':
         browser.open_url(self._join_url(host, path))
         return self
