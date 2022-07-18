@@ -20,11 +20,11 @@ def get_options():
         options.add_argument('--disable-dev-shm-usage')
         options.add_argument('--disable-gpu')
 
-    profile = {'plugins.always_open_pdf_externally': True,
-               'download.default_directory': get_path(DOWNLOADS_DIR),
-               'download.prompt_for_download': False}
-
-    options.add_experimental_option('prefs', profile)
+    # profile = {'plugins.always_open_pdf_externally': True,
+    #            'download.default_directory': get_path(DOWNLOADS_DIR),
+    #            'download.prompt_for_download': False}
+    #
+    # options.add_experimental_option('prefs', profile)
     options.set_capability('goog:loggingPrefs', {'performance': 'ALL'})
 
     return options

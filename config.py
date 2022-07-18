@@ -14,5 +14,5 @@ USER_EMAIL = env.str('USER_EMAIL')
 USER_PASSWORD = env.str('USER_PASSWORD')
 
 SCREENSHOTS_DIR = '.screenshots'
-DOWNLOADS_DIR = '.downloads'
+# DOWNLOADS_DIR = '.downloads'
 CACHE_DIR = '.cache'
