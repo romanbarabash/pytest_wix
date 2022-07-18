@@ -23,7 +23,7 @@ def get_options():
     #     options.add_argument('--disable-dev-shm-usage')
     #     options.add_argument('--disable-gpu')
     #
-    options.set_capability('goog:loggingPrefs', {'performance': 'ALL'})
+    # options.set_capability('goog:loggingPrefs', {'performance': 'ALL'})
 
     return options
 
