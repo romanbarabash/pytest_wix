@@ -1,7 +1,6 @@
 from selenium import webdriver
 
-from config import DEBUG, DOWNLOADS_DIR
-from src.utils import get_path
+from config import DEBUG
 from src.wd.br.browser_manger import browser_manager
 
 DEFAULT_BROWSER_NAME = 'default'
