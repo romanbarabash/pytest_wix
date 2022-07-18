@@ -3,7 +3,7 @@ from environs import Env
 env = Env()
 env.read_env(verbose=True)
 
-TIMEOUT = env.int('TIMEOUT', 30)
+TIMEOUT = env.int('TIMEOUT', 10)
 POLLING = env.float('POLLING', 0.5)
 
 COMPARE_TEXT = env.bool('COMPARE_TEXT', True)
