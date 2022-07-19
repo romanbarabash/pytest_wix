@@ -1,7 +1,6 @@
 from abc import ABCMeta, abstractmethod
 from typing import Union
 
-from config import DEBUG, COMPARE_TEXT
 from src.utils import CompareString
 
 __all__ = ['VisibleElementCondition', 'InvisibleElementCondition',
@@ -64,4 +63,4 @@ class ValueElementCondition(BaseCondition):
                                        self.__case_insensitive)
 
         if not compare_string.is_equal:
-            raise AssertionError(compare_string.get_compared_console_text() if DEBUG and COMPARE_TEXT else compare_string.get_console_text())
+            raise AssertionError(compare_string.get_compared_console_text())
