@@ -17,6 +17,8 @@ def get_options():
         options.add_argument('--disable-gpu')
     else:
         options.add_argument("--start-maximized")
+        options.add_argument('--ignore-ssl-errors=yes')
+        options.add_argument('--ignore-certificate-errors')
         options.set_capability('goog:loggingPrefs', {'performance': 'ALL'})
 
     return options
