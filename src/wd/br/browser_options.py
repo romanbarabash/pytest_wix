@@ -10,15 +10,13 @@ DEFAULT_BROWSER_NAME = 'default'
 def get_options():
     options = webdriver.ChromeOptions()
     options.add_argument("--start-maximized")
-    options.add_argument('--ignore-ssl-errors=yes')
-    options.add_argument('--ignore-certificate-errors')
 
     if not DEBUG:
         options.add_argument("--headless")
         options.add_argument("--no-sandbox")
         options.add_argument("--window-size=1920,1080")
         options.add_argument('--disable-dev-shm-usage')
-        
+
     options.set_capability('goog:loggingPrefs', {'performance': 'ALL'})
 
     return options
