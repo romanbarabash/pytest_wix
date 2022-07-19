@@ -1,7 +1,6 @@
 from selenium import webdriver
 from webdriver_manager.chrome import ChromeDriverManager
 
-from config import DEBUG
 from src.wd.br.browser_manger import browser_manager
 
 DEFAULT_BROWSER_NAME = 'default'
@@ -9,14 +8,10 @@ DEFAULT_BROWSER_NAME = 'default'
 
 def get_options():
     options = webdriver.ChromeOptions()
-    options.add_argument("--start-maximized")
-
-    if not DEBUG:
-        options.add_argument("--headless")
-        options.add_argument("--no-sandbox")
-        options.add_argument("--window-size=1920,1080")
-        options.add_argument('--disable-dev-shm-usage')
-
+    options.add_argument("--headless")
+    options.add_argument("--no-sandbox")
+    options.add_argument("--window-size=1920,1080")
+    options.add_argument('--disable-dev-shm-usage')
     return options
 
 
