@@ -28,7 +28,6 @@ pipeline {
             steps {
                 dir('pytest_wix') {
                     sh 'pytest --tb=auto tests --alluredir ./allure-results'
-                    sh 'allure generate allure-results --clean'
                 }
             }
         }
