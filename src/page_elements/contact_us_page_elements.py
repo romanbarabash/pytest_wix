@@ -12,4 +12,4 @@ class ContactUsPageElements:
         self.message_textarea = element(by.xpath("//textarea[contains(@id,'textarea')]"))
         # endregion
 
-        self.submit_button = element(by.xpath("//button[./*[text()='Submit']]"))
+        self.submit_button = element(by.xpath("//!!!button[./*[text()='Submit']]"))
