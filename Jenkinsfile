@@ -1,12 +1,11 @@
 pipeline {
     agent any
     environment {
-        HOST = ""
-        USER_EMAIL = ""
-        USER_PASSWORD = ""
+        HOST = credentials('pytest_wix_host')
+        USER_EMAIL = credentials('user_email')
+        USER_PASSWORD = credentials('user_password')
         CLOSE_BROWSER = "true"
         DEBUG = "true"
-        DISPLAY = ':99'
     }
     stages {
         stage('Clean up'){
