@@ -4,7 +4,6 @@ pipeline {
         HOST = credentials('pytest_wix_host')
         USER_EMAIL = credentials('user_email')
         USER_PASSWORD = credentials('user_password')
-        CLOSE_BROWSER = "true"
         DEBUG = "true"
     }
     stages {
