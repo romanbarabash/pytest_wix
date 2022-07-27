@@ -9,9 +9,8 @@ pipeline {
     stages {
         stage('Build using Dockerfile'){
             agent {
-                dockerfile{
+                dockerfile {
                 label 'pytest_wix'
-                dir 'Dockerfile'
                 }
             }
          }
