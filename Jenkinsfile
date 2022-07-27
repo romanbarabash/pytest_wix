@@ -12,7 +12,6 @@ pipeline {
                 dockerfile true
                 }
             }
-         }
         stage('Clean up'){
             steps {
                 cleanWs()
