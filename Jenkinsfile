@@ -1,5 +1,5 @@
 pipeline {
-    agent none
+    agent any
     environment {
         HOST = credentials('pytest_wix_host')
         USER_EMAIL = credentials('user_email')
@@ -9,8 +9,7 @@ pipeline {
     stages {
         stage('Build using Dockerfile'){
             agent {
-                dockerfile {
-                label 'pytest_wix'
+                dockerfile true
                 }
             }
          }
