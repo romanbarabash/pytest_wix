@@ -1,8 +1,6 @@
 pipeline {
     agent {
-        dockerfile {
-            filename 'Dockerfile'
-        }
+        dockerfile true
     }
     environment {
         HOST = credentials('pytest_wix_host')
