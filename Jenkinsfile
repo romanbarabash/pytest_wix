@@ -1,5 +1,5 @@
 pipeline {
-    agent any
+     agent { dockerfile true }
     environment {
         HOST = credentials('pytest_wix_host')
         USER_EMAIL = credentials('user_email')
@@ -7,11 +7,6 @@ pipeline {
         DEBUG = "true"
     }
     stages {
-        stage('Build using Dockerfile'){
-            agent {
-                dockerfile true
-                }
-            }
         stage('Clean up'){
             steps {
                 cleanWs()
