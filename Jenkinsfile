@@ -1,5 +1,7 @@
 pipeline {
-    agent any
+    agent {
+        dockerfile true
+    }
     environment {
         HOST = credentials('pytest_wix_host')
         USER_EMAIL = credentials('user_email')
@@ -17,13 +19,13 @@ pipeline {
                 sh 'git clone https://github.com/romanbarabash/pytest_wix.git'
             }
         }
-        stage('Build'){
-            steps {
-                dir('pytest_wix') {
-                    sh 'pip install -r requirements.txt'
-                }
-            }
-        }
+//        stage('Build'){
+//            steps {
+//                dir('pytest_wix') {
+//                    sh 'pip install -r requirements.txt'
+//                }
+//            }
+//        }
         stage('Run Tests'){
             steps {
                 dir('pytest_wix') {
