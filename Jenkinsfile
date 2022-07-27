@@ -22,13 +22,6 @@ pipeline {
                 sh 'git clone https://github.com/romanbarabash/pytest_wix.git'
             }
         }
-//        stage('Build'){
-//            steps {
-//                dir('pytest_wix') {
-//                    sh 'pip install -r requirements.txt'
-//                }
-//            }
-//        }
         stage('Run Tests'){
             steps {
                 dir('pytest_wix') {
