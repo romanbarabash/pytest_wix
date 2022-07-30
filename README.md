@@ -12,9 +12,6 @@ allure generate allure-results --clean
 ```
 Allure should open report under new tab
 
-### Jenkins
-
-Server available locally under http://localhost:8080/
 
 
 
