@@ -10,11 +10,11 @@ from selenium.webdriver.chrome.webdriver import WebDriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.remote.webelement import WebElement
-from selenium.webdriver.support.select import Select
 
 from config import TIMEOUT, POLLING
 from src.exception_handler import retry, handle_exception
-from src.wd.br.browser_manger import browser_manager
+from src.wd.browser import browser_manager
+
 from src.wd.conditions import BaseCondition
 
 T = TypeVar('T')
@@ -51,7 +51,7 @@ class Locator(Generic[T]):
 class BaseElement:
     @property
     def driver(self) -> WebDriver:
-        return browser_manager.driver
+        return browser_manager.get_browser()
 
 
 class Element(BaseElement):
@@ -82,7 +82,7 @@ class Element(BaseElement):
             if not force:
                 element.click()
             else:
-                action = ActionChains(browser_manager.driver)
+                action = ActionChains(self.driver)
                 action.move_to_element(element).click().perform()
         return self
 
@@ -98,27 +98,6 @@ class Element(BaseElement):
                 self.click(force=True)
         return self
 
-    @retry(timeout=TIMEOUT, polling=POLLING)
-    def scroll_into_view(self, block: Literal['start', 'center', 'end', 'nearest'] = 'start'):
-        with allure.step(f'Scroll into view "{self}"'):
-            browser_manager.driver.execute_script(f"arguments[0].scrollIntoView({{'block': '{block}'}});", self())
-        return self
-
-    @retry(timeout=TIMEOUT, polling=POLLING)
-    def get_scroll_height(self):
-        return browser_manager.driver.execute_script('return arguments[0].scrollHeight;', self())
-
-    @retry(timeout=TIMEOUT, polling=POLLING)
-    def get_scroll_top(self):
-        return browser_manager.driver.execute_script('return arguments[0].scrollTop;', self())
-
-    @retry(timeout=TIMEOUT, polling=POLLING)
-    def scroll_to(self, x: int, y: int):
-        return browser_manager.driver.execute_script(f'arguments[0].scrollTo({x},{y});', self())
-
-    @retry(timeout=TIMEOUT, polling=POLLING)
-    def scroll_by(self, x: int, y: int):
-        return browser_manager.driver.execute_script(f'arguments[0].scrollBy({x},{y});', self())
 
     @retry(timeout=TIMEOUT, polling=POLLING)
     def clear(self) -> Element:
@@ -136,9 +115,6 @@ class Element(BaseElement):
             element.send_keys(value)
         return self
 
-    @property
-    def options(self) -> Collection:
-        return Collection(Locator(f'{self}.options', lambda: Select(self()).options))
 
     def should(self, condition: BaseCondition, timeout: int = TIMEOUT, polling: float = POLLING, strict: bool = True) -> Element:
         wait_for(self, condition, timeout, polling, strict)
@@ -170,23 +146,6 @@ class Element(BaseElement):
             return True
         except NoSuchElementException:
             return False
-
-    def is_focused(self):
-        return self() == self.driver.switch_to.active_element
-
-    @retry(timeout=TIMEOUT, polling=POLLING)
-    def get_attribute(self, name: str) -> str:
-        return self().get_attribute(name)
-
-    @retry(timeout=TIMEOUT, polling=POLLING)
-    def value_of_pseudo_element(self, pseudo_element_name: str, css_property: str) -> str:
-        element = self()
-        script = f'return window.getComputedStyle(arguments[0], "{pseudo_element_name}").getPropertyValue("{css_property}")'
-        return self.driver.execute_script(script, element).replace('"', '')
-
-    @retry(timeout=TIMEOUT, polling=POLLING)
-    def value_of_css_property(self, property_name: str) -> str:
-        return self().value_of_css_property(property_name=property_name)
 
 
 class Collection(BaseElement):

@@ -4,7 +4,7 @@ import pytest
 
 from config import SCREENSHOTS_DIR
 from src.utils import get_path
-from src.wd.br.browser_manger import browser_manager
+
 
 
 class Status(Enum):
@@ -39,7 +39,8 @@ def pytest_report_teststatus(report):
 def on_fail(request):
     def screenshot():
         if TestCaseStatus.is_failed():
-            browser_manager.attach_screenshot_and_logs()
-            browser_manager.save_screenshot(get_path(SCREENSHOTS_DIR), request.node.name)
+            pass
+            # browser.attach_screenshot_and_logs()
+            # browser.save_screenshot(get_path(SCREENSHOTS_DIR), request.node.name)
 
     request.addfinalizer(screenshot)

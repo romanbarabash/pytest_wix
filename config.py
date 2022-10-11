@@ -14,3 +14,5 @@ USER_PASSWORD = env.str('USER_PASSWORD')
 
 SCREENSHOTS_DIR = '.screenshots'
 CACHE_DIR = '.cache'
+
+CHROME_DRIVER_PATH = '/Users/rbarab/Documents/chromedriver/chromedriver'

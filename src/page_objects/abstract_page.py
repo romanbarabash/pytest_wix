@@ -1,7 +1,7 @@
 from abc import ABCMeta
 from urllib.parse import urljoin
 
-from src.wd.br.browser import browser
+from src.wd import browser_manager
 
 
 class AbstractPage(metaclass=ABCMeta):
@@ -10,5 +10,5 @@ class AbstractPage(metaclass=ABCMeta):
         return urljoin(host, path)
 
     def open(self, host: str, path: str) -> 'AbstractPage':
-        browser.open_url(self._join_url(host, path))
+        browser_manager.open_url(self._join_url(host, path))
         return self

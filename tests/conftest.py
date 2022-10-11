@@ -6,7 +6,7 @@ from src.page_objects.contact_us_page import ContactUsPage
 from src.page_objects.faq_page import FAQPage
 from src.page_objects.homepage import HomePage
 from src.page_objects.login_page import LoginPage
-from src.wd.br import browser_options
+from src.wd import browser_manager
 
 
 # region pages
@@ -43,15 +43,14 @@ def human_verification_modal() -> HumanVerificationModal:
 
 # endregion modals
 
-
-@pytest.fixture(scope='package')
+@pytest.fixture
 def open_browser():
-    browser_options.open_browser()
+    browser_manager.open_browser()
     yield
-    browser_options.close_browser()
+    browser_manager.close_browser()
 
 
-@pytest.fixture(scope='package')
+@pytest.fixture
 def sign_in(open_browser, login_page):
     login_page.sign_in(USER_EMAIL, USER_PASSWORD)
 

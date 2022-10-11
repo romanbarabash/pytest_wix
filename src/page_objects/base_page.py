@@ -28,11 +28,3 @@ class BasePage(AbstractPage):
     def navigate(self):
         self.open(host=HOST, path=self.PATH)
         return self
-
-    def verify_current_url(self, partial_url):
-        assert_that(browser.current_url, contains_string(str(partial_url)), 'Verify url contains text')
-        return self
-
-    def refresh_page(self) -> 'AbstractPage':
-        browser.driver.refresh()
-        return self
