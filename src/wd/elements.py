@@ -51,7 +51,7 @@ class Locator(Generic[T]):
 class BaseElement:
     @property
     def driver(self) -> WebDriver:
-        return browser_manager.get_browser()
+        return browser_manager.driver
 
 
 class Element(BaseElement):

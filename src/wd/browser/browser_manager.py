@@ -38,13 +38,14 @@ class BrowserManager(metaclass=_SingletonMeta):
 
         return options
 
-    def get_browser(self, web_driver: WebDriver) -> WebDriver:
-        self.__current_driver = web_driver
-        self.__current_driver.implicitly_wait(0)
+    @property
+    def driver(self) -> WebDriver:
         return self.__current_driver
 
-    def open_browser(self):
-        self.get_browser(webdriver.Chrome(executable_path=CHROME_DRIVER_PATH, options=self.get_options()))
+    def open_browser(self) -> WebDriver:
+        self.__current_driver = webdriver.Chrome(executable_path=CHROME_DRIVER_PATH, options=self.get_options())
+        self.__current_driver.implicitly_wait(0)
+        return self.__current_driver
 
     def open_url(self, url: str):
         self.__current_driver.get(url)
