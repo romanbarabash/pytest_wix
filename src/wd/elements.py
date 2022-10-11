@@ -1,7 +1,7 @@
 from __future__ import annotations
 
 import time
-from typing import List, Generic, Callable, TypeVar, Tuple, Union, Iterator, Optional, Literal
+from typing import List, Generic, Callable, TypeVar, Tuple, Union, Iterator, Optional
 
 import allure
 from selenium.common.exceptions import NoSuchElementException
@@ -14,7 +14,6 @@ from selenium.webdriver.remote.webelement import WebElement
 from config import TIMEOUT, POLLING
 from src.exception_handler import retry, handle_exception
 from src.wd.browser import browser_manager
-
 from src.wd.conditions import BaseCondition
 
 T = TypeVar('T')
