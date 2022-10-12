@@ -11,8 +11,9 @@ DEBUG = env.bool('DEBUG', False)
 HOST = env.str('HOST')
 USER_EMAIL = env.str('USER_EMAIL')
 USER_PASSWORD = env.str('USER_PASSWORD')
+CHROME_DRIVER_PATH = env.str('CHROME_DRIVER_PATH')
+
 
 SCREENSHOTS_DIR = '.screenshots'
 CACHE_DIR = '.cache'
 
-CHROME_DRIVER_PATH = '/Users/rbarab/Documents/chromedriver/chromedriver'

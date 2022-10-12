@@ -1,5 +1,11 @@
+import base64
+import json
+from datetime import datetime
+from pathlib import Path
 from typing import Tuple
 
+import allure
+from allure_commons.types import AttachmentType
 from selenium import webdriver
 from selenium.webdriver.chrome.webdriver import WebDriver
 from selenium.webdriver.common.by import By
@@ -43,7 +49,7 @@ class BrowserManager(metaclass=_SingletonMeta):
         return self.__current_driver
 
     def open_browser(self) -> WebDriver:
-        self.__current_driver = webdriver.Chrome(executable_path=CHROME_DRIVER_PATH, options=self.get_options())
+        self.__current_driver = webdriver.Chrome(executable_path=CHROME_DRIVER_PATH,  options=self.get_options())
         self.__current_driver.implicitly_wait(0)
         return self.__current_driver
 
@@ -64,6 +70,48 @@ class BrowserManager(metaclass=_SingletonMeta):
     def collection(self, by: Tuple[By, str]) -> Collection:
         driver = lambda: self.__current_driver
         return Collection(Locator(f'collection{by}', lambda: driver().find_elements(*by)))
+
+    def attach_screenshot_and_logs(self):
+        current_window = self.driver.current_window_handle
+
+        for tab_index, window_name in enumerate(self.driver.window_handles):
+            self.driver.switch_to.window(window_name)
+
+            allure.attach(body=self.get_full_size_screenshot(),
+                          name=f'Screenshot, tab {tab_index + 1}{" (current tab)" if window_name == current_window else ""} {self.driver.current_url}',
+                          attachment_type=AttachmentType.PNG)
+
+        self.driver.switch_to.window(current_window)
+
+        allure.attach(body=json.dumps(self.driver.get_log('browser'), indent=4),
+                      name="Logs",
+                      attachment_type=AttachmentType.TEXT)
+
+    def save_screenshot(self, full_path, file_name: str = 'screenshot'):
+        current_date_time = datetime.now().strftime('%Y-%m-%d-%H-%M-%S')
+        file_name = f'{file_name}-{current_date_time}.png'
+        path = Path(full_path, file_name)
+
+        if not path.parent.exists():
+            path.parent.mkdir()
+
+        self.driver.save_screenshot(str(path))
+
+    def get_full_size_screenshot(self):
+        layout_metrics = self.driver.execute_cdp_cmd('Page.getLayoutMetrics', {})
+        screenshot = self.driver.execute_cdp_cmd('Page.captureScreenshot', {'format': 'png',
+                                                                            'captureBeyondViewport': True,
+                                                                            'clip': {
+                                                                                'width': layout_metrics['contentSize'][
+                                                                                    'width'],
+                                                                                'height': layout_metrics['contentSize'][
+                                                                                    'height'],
+                                                                                'x': 0,
+                                                                                'y': 0,
+                                                                                'scale': 1}
+                                                                            })
+
+        return base64.b64decode(screenshot['data'])
 
 
 browser_manager = BrowserManager()
