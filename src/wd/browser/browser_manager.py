@@ -8,12 +8,9 @@ import allure
 from allure_commons.types import AttachmentType
 from selenium import webdriver
 from selenium.webdriver.chrome.webdriver import WebDriver
-from selenium.webdriver.common.by import By
 
 from config import CHROME_DRIVER_PATH, DEBUG
-from src.wd.elements import Locator, Element, Collection
 
-__all__ = ['browser_manager']
 
 
 class _SingletonMeta(type):
@@ -62,14 +59,6 @@ class BrowserManager(metaclass=_SingletonMeta):
 
     def refresh_page(self):
         self.__current_driver.refresh()
-
-    def element(self, by: Tuple[By, str]) -> Element:
-        driver = lambda: self.__current_driver
-        return Element(Locator(f'element{by}', lambda: driver().find_element(*by)))
-
-    def collection(self, by: Tuple[By, str]) -> Collection:
-        driver = lambda: self.__current_driver
-        return Collection(Locator(f'collection{by}', lambda: driver().find_elements(*by)))
 
     def attach_screenshot_and_logs(self):
         current_window = self.driver.current_window_handle

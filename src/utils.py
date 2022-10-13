@@ -105,3 +105,4 @@ def get_root_folder() -> Path:
 
 def get_path(*path) -> str:
     return os.path.join(get_root_folder(), *path)
+

@@ -13,12 +13,13 @@ from selenium.webdriver.remote.webelement import WebElement
 
 from config import TIMEOUT, POLLING
 from src.exception_handler import retry, handle_exception
-from src.wd.browser import browser_manager
+from src.wd.browser.browser_manager import browser_manager
 from src.wd.conditions import BaseCondition
 
 T = TypeVar('T')
 
 __all__ = ['Element', 'Collection', 'Locator']
+
 
 
 def wait_for(element: Union[Element, Collection], condition: BaseCondition, timeout: int, polling: float, strict: bool):

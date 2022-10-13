@@ -4,7 +4,7 @@ import pytest
 
 from config import SCREENSHOTS_DIR
 from src.utils import get_path
-from src.wd import browser_manager
+from src.wd.browser.browser_manager import browser_manager
 
 
 class Status(Enum):

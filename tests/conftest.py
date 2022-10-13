@@ -6,7 +6,7 @@ from src.page_objects.contact_us_page import ContactUsPage
 from src.page_objects.faq_page import FAQPage
 from src.page_objects.homepage import HomePage
 from src.page_objects.login_page import LoginPage
-from src.wd import browser_manager
+from src.wd.browser.browser_manager import browser_manager
 
 
 # region pages

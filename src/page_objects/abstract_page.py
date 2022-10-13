@@ -1,7 +1,7 @@
 from abc import ABCMeta
 from urllib.parse import urljoin
 
-from src.wd import browser_manager
+from src.wd.browser.browser_manager import browser_manager
 
 
 class AbstractPage(metaclass=ABCMeta):
