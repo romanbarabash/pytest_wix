@@ -2,7 +2,7 @@ import functools
 import time
 
 from config import TIMEOUT, POLLING
-from src.webdriver.browser.browser_manager import browser_manager
+from src.webdriver.browser_manager import browser_manager
 
 
 def retry(timeout=TIMEOUT, polling=POLLING, screenshot: bool = True):

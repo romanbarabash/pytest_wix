@@ -2,7 +2,7 @@ from typing import Tuple
 
 from selenium.webdriver.common.by import By
 
-from src.webdriver.browser.browser_manager import browser_manager
+from src.webdriver.browser_manager import browser_manager
 from src.webdriver.elements import Locator, Element, Collection
 
 __all__ = {'element', 'collection'}

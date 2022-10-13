@@ -13,7 +13,7 @@ from selenium.webdriver.remote.webelement import WebElement
 
 from config import TIMEOUT, POLLING
 from src.exception_handler import retry, handle_exception
-from src.webdriver.browser.browser_manager import browser_manager
+from src.webdriver.browser_manager import browser_manager
 from src.webdriver.conditions import BaseCondition
 
 T = TypeVar('T')
