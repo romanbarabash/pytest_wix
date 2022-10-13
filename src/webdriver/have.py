@@ -1,6 +1,6 @@
 from typing import Union
 
-from src.wd.conditions import ValueElementCondition
+from src.webdriver.conditions import ValueElementCondition
 
 
 def value(value: Union[int, str], trim_extra_space=False, trim_comma=False, trim_newline=False, case_insensitive=False) -> ValueElementCondition:

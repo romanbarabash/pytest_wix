@@ -4,7 +4,7 @@ from src.exception_handler import retry
 from src.models.contact_us_model import ContactUsModel
 from src.page_elements.contact_us_page_elements import ContactUsPageElements
 from src.page_objects.base_page import BasePage
-from src.wd import have
+from src.webdriver import have
 
 
 class ContactUsPage(BasePage):

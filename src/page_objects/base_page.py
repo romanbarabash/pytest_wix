@@ -4,7 +4,7 @@ from config import HOST
 from src.page_elements.base_elements import BaseElements
 from src.page_elements.modals.human_verification_modal_elements import HumanVerificationModalElements
 from src.page_objects.abstract_page import AbstractPage
-from src.wd import be
+from src.webdriver import be
 
 
 class HumanVerificationModal:

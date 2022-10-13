@@ -1,4 +1,4 @@
-from src.wd import element, by
+from src.webdriver import element, by
 
 
 class ContactUsPageElements:

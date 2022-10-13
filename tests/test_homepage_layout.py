@@ -2,15 +2,15 @@ import allure
 import pytest
 
 from src.page_elements.homepage_elements import HomepageElements
-from src.wd import be
+from src.webdriver import be
 
 
 
 @allure.story('WIX site')
 @allure.title('Test Home page layout')
 @pytest.mark.functional
-@pytest.mark.usefixtures('sign_in', 'on_fail', 'open_homepage')
-def test_homepage_layout():
+@pytest.mark.usefixtures('sign_in', 'on_fail')
+def test_homepage_layout(open_homepage):
     homepage_elements = HomepageElements()
 
     with allure.step('#1 Verify Header content'):
