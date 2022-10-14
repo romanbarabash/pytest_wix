@@ -1,4 +1,4 @@
-from src.webdriver import element, by
+from src.elements_manager import element, by
 
 
 class HumanVerificationModalElements:

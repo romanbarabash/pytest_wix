@@ -2,8 +2,7 @@ import allure
 import pytest
 
 from src.page_elements.homepage_elements import HomepageElements
-from src.webdriver import be
-
+from src.elements_manager import be
 
 
 @allure.story('WIX site')

@@ -1,4 +1,4 @@
-from src.webdriver.conditions import ExistElementCondition, \
+from src.elements_manager.conditions import ExistElementCondition, \
     NotExistElementCondition, VisibleElementCondition, \
     InvisibleElementCondition, EnabledElementCondition, \
     DisabledElementCondition

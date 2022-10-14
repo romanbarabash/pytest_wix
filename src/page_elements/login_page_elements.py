@@ -1,4 +1,4 @@
-from src.webdriver import element, by
+from src.elements_manager import element, by
 
 
 class LoginPageElements:
@@ -8,4 +8,5 @@ class LoginPageElements:
         self.login_with_email_button = element(by.xpath('//span[text()="Log in with Email"]'))
         self.email_field = element(by.xpath('//form[@data-testid="emailAuth"]//input[@type="email"]'))
         self.password_field = element(by.xpath('//form[@data-testid="emailAuth"]//input[@type="password"]'))
-        self.email_login_button = element(by.xpath('//form[@data-testid="emailAuth"]//button[@data-testid="buttonElement"]'))
+        self.email_login_button = element(
+            by.xpath('//form[@data-testid="emailAuth"]//button[@data-testid="buttonElement"]'))

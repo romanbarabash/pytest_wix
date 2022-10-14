@@ -3,7 +3,7 @@ from time import sleep
 from config import HOST, USER_EMAIL, USER_PASSWORD
 from src.page_elements.login_page_elements import LoginPageElements
 from src.page_objects.abstract_login_page import AbstractLoginPage
-from src.webdriver import be
+from src.elements_manager import be
 
 
 class LoginPage(AbstractLoginPage):

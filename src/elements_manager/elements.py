@@ -12,9 +12,9 @@ from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.remote.webelement import WebElement
 
 from config import TIMEOUT, POLLING
+from src.browser_manager.browser_manager import browser_manager
 from src.exception_handler import retry, handle_exception
-from src.webdriver.browser_manager import browser_manager
-from src.webdriver.conditions import BaseCondition
+from src.elements_manager.conditions import BaseCondition
 
 T = TypeVar('T')
 
@@ -227,3 +227,13 @@ class Collection(BaseElement):
         if self.size():
             return True
         return False
+
+
+def element(by: Tuple[By, str]) -> Element:
+    driver = lambda: browser_manager.driver
+    return Element(Locator(f'element{by}', lambda: driver().find_element(*by)))
+
+
+def collection(by: Tuple[By, str]) -> Collection:
+    driver = lambda: browser_manager.driver
+    return Collection(Locator(f'collection{by}', lambda: driver().find_elements(*by)))

@@ -1,12 +1,12 @@
 import pytest
 
 from config import USER_EMAIL, USER_PASSWORD
+from src.browser_manager.browser_manager import browser_manager
 from src.page_objects.base_page import HumanVerificationModal
 from src.page_objects.contact_us_page import ContactUsPage
 from src.page_objects.faq_page import FAQPage
 from src.page_objects.homepage import HomePage
 from src.page_objects.login_page import LoginPage
-from src.webdriver.browser_manager import browser_manager
 
 
 # region pages

@@ -2,10 +2,8 @@ from typing import Tuple
 
 from selenium.webdriver.common.by import By
 
-from src.webdriver.browser_manager import browser_manager
-from src.webdriver.elements import Locator, Element, Collection
-
-__all__ = {'element', 'collection'}
+from src.browser_manager.browser_manager import browser_manager
+from src.elements_manager.elements import Element, Locator, Collection
 
 
 def element(by: Tuple[By, str]) -> Element:
@@ -16,4 +14,3 @@ def element(by: Tuple[By, str]) -> Element:
 def collection(by: Tuple[By, str]) -> Collection:
     driver = lambda: browser_manager.driver
     return Collection(Locator(f'collection{by}', lambda: driver().find_elements(*by)))
-

@@ -3,8 +3,9 @@ from enum import Enum
 import pytest
 
 from config import SCREENSHOTS_DIR
+from src.browser_manager.browser_manager import browser_manager
 from src.utils import get_path
-from src.webdriver.browser_manager import browser_manager
+
 
 
 class Status(Enum):

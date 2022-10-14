@@ -2,7 +2,7 @@ import allure
 import pytest
 
 from src.page_elements.faq_page_elements import FAQPageElements
-from src.webdriver import be
+from src.elements_manager import be
 
 
 @allure.story('WIX site')
