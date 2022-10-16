@@ -228,12 +228,3 @@ class Collection(BaseElement):
             return True
         return False
 
-
-def element(by: Tuple[By, str]) -> Element:
-    driver = lambda: browser_manager.driver
-    return Element(Locator(f'element{by}', lambda: driver().find_element(*by)))
-
-
-def collection(by: Tuple[By, str]) -> Collection:
-    driver = lambda: browser_manager.driver
-    return Collection(Locator(f'collection{by}', lambda: driver().find_elements(*by)))
