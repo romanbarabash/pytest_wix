@@ -18,8 +18,6 @@ class LoginPage(AbstractLoginPage):
         return self
 
     def login(self, username: str, password: str) -> 'LoginPage':
-        # TODO handle issue with tremblin UI after page load
-        sleep(2)
         self.login_elements.login_button.should(be.visible()).click()
         self.login_elements.sign_in_login_switcher.should(be.visible()).click()
         self.login_elements.login_with_email_button.click()
